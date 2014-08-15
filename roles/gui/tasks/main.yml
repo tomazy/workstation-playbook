@@ -22,3 +22,8 @@
     dest=~/.local/share/applications/lxterminal.desktop
     regexp=^Exec=
     line='Exec=lxterminal -e "bash -il"'
+
+- name: Use 256 colors in LXTerminal
+  lineinfile: >
+    dest=~/.profile
+    line='if [ "$TERM" == "xterm" ]; then export TERM="xterm-256color"; fi'
