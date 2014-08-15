@@ -1,0 +1,94 @@
+---
+- name: Ruby dependencies
+  apt: name={{item}} state=installed
+  sudo: yes
+  with_items:
+    - build-essential
+    - curl
+    - git-core
+    - libcurl4-openssl-dev
+    - libffi-dev
+    - libgdbm-dev
+    - libncurses5-dev
+    - libreadline-dev
+    - libreadline6-dev
+    - libsqlite3-dev
+    - libssl-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libyaml-dev
+    - libyaml-dev 
+    - sqlite3
+    - zlib1g-dev
+
+- name: Determine whether ruby-install is installed
+  stat: path=/usr/local/bin/ruby-install
+  register: ruby_install
+
+- name: Download ruby-install
+  get_url: url=https://github.com/postmodern/ruby-install/archive/v0.4.3.tar.gz
+           dest=/tmp/ruby-install-v0.4.3.tar.gz
+  when: not ruby_install.stat.exists
+
+- name: Extract ruby-install
+  command: >
+    chdir=/tmp
+    tar -zxf ruby-install-v0.4.3.tar.gz
+    creates=/tmp/ruby-install-0.4.3
+  when: not ruby_install.stat.exists
+
+- name: Install ruby-install
+  command: >
+    chdir=/tmp/ruby-install-0.4.3 
+    creates=/usr/local/bin/ruby-install
+    sudo make install
+  when: not ruby_install.stat.exists
+
+- name: Install rubies
+  command: >
+    chdir=/tmp
+    ruby-install ruby {{item}} --no-reinstall --src-dir /tmp
+  with_items: ruby_versions
+
+- name: Determine whether chruby is installed
+  stat: path=/usr/local/share/chruby/chruby.sh
+  register: chruby
+
+- name: Download chruby
+  get_url: >
+    url=https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
+    dest=/tmp/chruby-0.3.8.tar.gz
+  when: not chruby.stat.exists
+
+- name: Extract chruby
+  command: >
+    chdir=/tmp
+    tar -zxf chruby-0.3.8.tar.gz
+    creates=/tmp/chruby-0.3.8
+  when: not chruby.stat.exists
+
+- name: Install chruby
+  command: >
+    chdir=/tmp/chruby-0.3.8
+    creates=/usr/local/share/chruby
+    sudo make install
+  when: not chruby.stat.exists
+
+- name: Set default ruby
+  lineinfile: >
+    dest=~/.ruby-version
+    state=present
+    line="ruby-{{ruby_default}}"
+    create=yes
+
+- name: Enable chruby
+  lineinfile: >
+    dest=~/.profile
+    state=present
+    line="source /usr/local/share/chruby/chruby.sh"
+
+- name: Auto load latest ruby
+  lineinfile: >
+    dest=~/.profile
+    state=present
+    line="source /usr/local/share/chruby/auto.sh"

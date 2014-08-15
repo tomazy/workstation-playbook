@@ -1,0 +1,96 @@
+---
+- name: Add support for i386
+  sudo: yes
+  command: dpkg --add-architecture i386
+
+- name: Install default packages
+  apt: name={{item}} state=installed update_cache=yes
+  sudo: yes
+  with_items:
+    - unzip
+    - libc6:i386
+    - libncurses5:i386
+    - libstdc++6:i386
+    - lib32z1
+    - libgl1-mesa-dev
+
+- name: Create development directory
+  file: path=~/development state=directory
+
+- name: Determine Android Studio exists
+  stat: >
+    path=~/development/android-studio
+    get_md5=no
+  register: android_studio
+
+- name: Download Android Studio bundle
+  get_url: >
+    url=http://dl.google.com/android/studio/install/0.8.0/{{ android_studio_bundle_base_name }}.tgz
+    dest=/tmp/{{ android_studio_bundle_base_name }}.tgz
+  when: not android_studio.stat.exists
+
+- name: Extract Android Studio
+  command: >
+    chdir=/tmp
+    tar -zxf {{ android_studio_bundle_base_name }}.tgz
+  when: not android_studio.stat.exists
+
+- name: Move Android Studio
+  command: >
+    mv /tmp/android-studio ~/development/
+  when: not android_studio.stat.exists
+
+- name: Link SDK
+  file: >
+    src=~/development/android-studio/sdk
+    dest=~/development/android_sdk
+    state=link
+
+- name: Setup path (tools)
+  lineinfile: >
+    dest=~/.profile
+    line="export PATH=${PATH}:~/development/android_sdk/tools"
+
+- name: Setup path (platform-tools)
+  lineinfile: >
+    dest=~/.profile
+    line="export PATH=${PATH}:~/development/android_sdk/platform-tools"
+
+# -- ANT
+- name: Determine Ant exists
+  stat: >
+    path=~/development/apache-ant-1.9.4
+    get_md5=no
+  register: ant_dir
+
+- name: Download Ant
+  get_url: >
+    url=http://mirror.nus.edu.sg/apache//ant/binaries/apache-ant-1.9.4-bin.tar.gz
+    dest=/tmp/apache-ant-1.9.4-bin.tar.gz
+  when: not ant_dir.stat.exists
+
+- name: Extract Ant
+  command: >
+    chdir=/tmp
+    tar -zxf apache-ant-1.9.4-bin.tar.gz
+  when: not ant_dir.stat.exists
+
+- name: Move Ant to development
+  command: >
+    mv /tmp/apache-ant-1.9.4 ~/development/
+  when: not ant_dir.stat.exists
+
+- name: Setup Ant home 
+  lineinfile: >
+    dest=~/.profile
+    line="export ANT_HOME=~/development/apache-ant-1.9.4"
+
+- name: Add Ant to PATH
+  lineinfile: >
+    dest=~/.profile
+    line="export PATH=${PATH}:$ANT_HOME/bin"
+
+- name: Install desktop shortcut
+  template: >
+    src=android-studio.desktop.j2
+    dest=~/Desktop/android-studio.desktop

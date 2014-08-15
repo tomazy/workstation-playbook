@@ -1,0 +1,74 @@
+---
+- hosts: all
+
+  pre_tasks:
+    - name: Upgrade packages
+      apt: upgrade=yes update_cache=yes cache_valid_time=3600
+      sudo: yes
+
+    - command: locale-gen en_US en_US.UTF-8
+      sudo: yes
+
+    - command: dpkg-reconfigure locales
+      sudo: yes
+
+    - lineinfile: >
+        dest=/etc/default/locale
+        state=present
+        line='LC_ALL="en_US.UTF-8"'
+      sudo: yes
+
+    - name: Setup time zone
+      sudo: yes
+      file: >
+        dest=/etc/localtime
+        src=/usr/share/zoneinfo/Asia/Kuala_Lumpur
+        state=link
+        force=yes
+
+    - name: Setup host name (workstation)
+      sudo: yes
+      shell: >
+        echo workstation > /etc/hostname
+
+  roles:
+    - { role: tomazy.postgresql, postgresql_ext_install_dev_headers: yes }
+    - { role: ruby }
+    - { role: nodejs }
+    - { role: java }
+    - { role: workstation }
+    - { role: gui }
+    - { role: virtualbox }
+    - { role: chrome }
+    - { role: android }
+
+  tasks:
+    - name: Find current gem
+      shell: sudo -iu $USER which gem
+      register: gem_search
+
+    - name: Install default ruby gems
+      gem: >
+        executable={{gem_search.stdout}}
+        name={{item}}
+        user_install=no
+      with_items:
+        - pry
+        - rails
+        - guard
+        - tmuxinator
+        - sass
+
+    - name: Find current npm
+      shell: sudo -iu $USER which npm
+      register: npm_search
+
+    - name: Install default node packages
+      npm: >
+        global=yes
+        name={{item}}
+        executable={{npm_search.stdout}}
+      with_items:
+        - bower
+        - grunt-cli
+        - cordova

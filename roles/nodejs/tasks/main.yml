@@ -1,0 +1,27 @@
+---
+- name: Dependencies
+  apt: name={{ item }} state=installed
+  sudo: yes
+  with_items:
+    - build-essential
+    - git
+    - libssl-dev
+    - curl
+
+- name: Clone nvm
+  git: >
+    repo=https://github.com/creationix/nvm.git
+    dest=~/.nvm
+    update=no
+
+- name: Enable nvm
+  lineinfile: >
+    dest=~/.profile
+    line="source ~/.nvm/nvm.sh"
+    state=present
+
+- name: Install nodejs
+  command: sudo -iu $USER nvm install 0.10
+
+- name: Set default nodejs
+  command: sudo -iu $USER nvm alias default 0.10

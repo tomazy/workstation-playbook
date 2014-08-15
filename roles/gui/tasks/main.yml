@@ -1,0 +1,24 @@
+---
+- name: Install default packages
+  apt: name={{item}} state=installed
+  sudo: yes
+  with_items:
+    - lubuntu-desktop
+
+- name: Configure X11
+  sudo: yes
+  lineinfile: >
+    dest=/etc/X11/Xwrapper.config
+    regexp=^allowed_users=
+    line=allowed_users=anybody
+
+- name: Copy LXTerminal shourtcut
+  shell: >
+    mkdir -p ~/.local/share/applications/ &&
+    cp /usr/share/applications/lxterminal.desktop ~/.local/share/applications/lxterminal.desktop
+
+- name: Make LXTerminal load ~/.profile
+  lineinfile: >
+    dest=~/.local/share/applications/lxterminal.desktop
+    regexp=^Exec=
+    line='Exec=lxterminal -e "bash -il"'

@@ -1,0 +1,23 @@
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[user]
+	name = Tomek Maszkowski
+	email = tomazy@go2.pl
+[alias]
+	st = status -sb
+	co = checkout
+	br = branch -a
+	logx = log --graph --decorate --oneline --all
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+[gui]
+	spellingdictionary = en
+[merge]
+	tool = vimdiff
+[mergetool]
+	keepbackup = false
+[core]
+	editor = vim
+[push]
+	default = current

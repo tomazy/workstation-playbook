@@ -1,0 +1,10 @@
+---
+- name: Install VirtualBox packages
+  apt: name={{item}} state=installed
+  sudo: yes
+  with_items:
+    - virtualbox-guest-dkms
+    - virtualbox-guest-utils
+    - virtualbox-guest-x11
+
+

@@ -1,0 +1,14 @@
+--type-add
+css=.less,.scss
+
+--type-set
+coffee=.coffee
+
+--type-set
+haml=.haml,.hamlc
+
+--type-set
+markdown=.md,.markdown
+
+--type-set
+ejs=.ejs
