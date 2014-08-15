@@ -22,7 +22,7 @@
       sudo: yes
       file: >
         dest=/etc/localtime
-        src=/usr/share/zoneinfo/Asia/Kuala_Lumpur
+        src=/usr/share/zoneinfo/Asia/Singapore
         state=link
         force=yes
 
