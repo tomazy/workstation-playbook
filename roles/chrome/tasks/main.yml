@@ -9,6 +9,7 @@
     dest=/etc/apt/sources.list.d/google-chrome.list
     create=yes
     line='deb http://dl.google.com/linux/chrome/deb/ stable main'
+    mode=0644
 
 - name: Install Chrome
   sudo: yes
