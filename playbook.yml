@@ -43,21 +43,23 @@
     - { role: android }
 
   tasks:
-    - name: Find current gem
-      shell: sudo -iu $USER which gem
-      register: gem_search
+    - shell: bash -lc 'gem list'
+      register: gem_list
+      tags: ['gems']
 
     - name: Install default ruby gems
-      gem: >
-        executable={{gem_search.stdout}}
-        name={{item}}
-        user_install=no
+      command: bash -lc 'gem install {{item}}'
+      when: "'{{item}}' not in '{{gem_list.stdout}}'"
       with_items:
         - pry
         - rails
+        - rails-api
         - guard
         - tmuxinator
         - sass
+        - git-pair
+        - librarian-ansible
+      tags: ['gems']
 
     - name: Find current npm
       shell: sudo -iu $USER which npm

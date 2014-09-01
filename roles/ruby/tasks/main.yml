@@ -17,7 +17,6 @@
     - libxml2-dev
     - libxslt1-dev
     - libyaml-dev
-    - libyaml-dev 
     - sqlite3
     - zlib1g-dev
 
@@ -41,7 +40,8 @@
   command: >
     chdir=/tmp/ruby-install-0.4.3 
     creates=/usr/local/bin/ruby-install
-    sudo make install
+    make install
+  sudo: yes
   when: not ruby_install.stat.exists
 
 - name: Install rubies
@@ -71,7 +71,8 @@
   command: >
     chdir=/tmp/chruby-0.3.8
     creates=/usr/local/share/chruby
-    sudo make install
+    make install
+  sudo: yes
   when: not chruby.stat.exists
 
 - name: Set default ruby
