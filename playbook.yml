@@ -32,15 +32,15 @@
         echo workstation > /etc/hostname
 
   roles:
-    - { role: tomazy.postgresql, postgresql_ext_install_dev_headers: yes }
-    - { role: ruby }
-    - { role: nodejs }
-    - { role: java }
-    - { role: workstation }
-    - { role: gui }
-    - { role: virtualbox }
-    - { role: chrome }
-    - { role: android }
+    - { role: tomazy.postgresql, tags: ['postgresql'], postgresql_ext_install_dev_headers: yes }
+    - { role: ruby, tags: ['ruby'] }
+    - { role: nodejs, tags: ['nodejs'] }
+    - { role: java, tags: ['java'] }
+    - { role: workstation, tags: ['workstation'] }
+    - { role: gui, tags: ['gui'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: chrome, tags: ['chrome'] }
+    - { role: android, tags: ['android'] }
 
   tasks:
     - shell: bash -lc 'gem list'
@@ -64,6 +64,7 @@
     - name: Find current npm
       shell: sudo -iu $USER which npm
       register: npm_search
+      tags: ['nodejs']
 
     - name: Install default node packages
       npm: >
@@ -73,4 +74,4 @@
       with_items:
         - bower
         - grunt-cli
-        - cordova
+      tags: ['nodejs']
