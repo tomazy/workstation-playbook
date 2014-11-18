@@ -41,6 +41,7 @@
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: chrome, tags: ['chrome'] }
     - { role: android, tags: ['android'] }
+    - { role: python, tags: ['python'] }
 
   tasks:
     - shell: bash -lc 'gem list'

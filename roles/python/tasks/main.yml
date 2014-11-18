@@ -1,0 +1,22 @@
+---
+- name: Install python
+  apt: name=python state=installed
+  sudo: yes
+
+- stat: path=/usr/local/bin/pip
+  register: pip
+
+- name: Download pip installer
+  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp
+  when: not pip.stat.exists
+
+- name: Install pip
+  command: python /tmp/get-pip.py
+  sudo: yes
+  when: not pip.stat.exists
+
+- name: Default packages
+  pip: name={{item}}
+  sudo: yes
+  with_items:
+    - virtualenv
