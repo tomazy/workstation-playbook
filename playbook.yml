@@ -2,21 +2,25 @@
 - hosts: all
 
   pre_tasks:
-    - name: Upgrade packages
+    - name: Update packages
       apt: upgrade=yes update_cache=yes cache_valid_time=3600
       sudo: yes
+      tags: ['update-packages']
 
     - command: locale-gen en_US en_US.UTF-8
       sudo: yes
+      tags: ['locale']
 
     - command: dpkg-reconfigure locales
       sudo: yes
+      tags: ['locale']
 
     - lineinfile: >
         dest=/etc/default/locale
         state=present
         line='LC_ALL="en_US.UTF-8"'
       sudo: yes
+      tags: ['locale']
 
     - name: Setup time zone
       sudo: yes
@@ -25,11 +29,13 @@
         src=/usr/share/zoneinfo/Asia/Singapore
         state=link
         force=yes
+      tags: ['workstation']
 
     - name: Setup host name (workstation)
       sudo: yes
       shell: >
         echo workstation > /etc/hostname
+      tags: ['workstation']
 
   roles:
     - { role: tomazy.postgresql, tags: ['postgresql'], postgresql_ext_install_dev_headers: yes }
