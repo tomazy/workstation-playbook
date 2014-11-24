@@ -1,0 +1,17 @@
+---
+- name: Add key
+  apt_key: keyserver=keyserver.ubuntu.com id=7F0CEB10
+  sudo: yes
+
+- name: Setup repository
+  sudo: yes
+  lineinfile: >
+    dest=/etc/apt/sources.list.d/mongodb.list
+    create=yes
+    line='deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen'
+    mode=0644
+
+- name: Install MongoDB
+  sudo: yes
+  apt: name=mongodb-org state=latest update_cache=yes
+

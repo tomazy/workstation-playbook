@@ -48,6 +48,7 @@
     - { role: chrome, tags: ['chrome'] }
     - { role: android, tags: ['android'] }
     - { role: python, tags: ['python'] }
+    - { role: mongodb, tags: ['mongodb'] }
 
   tasks:
     - shell: bash -lc 'gem list'
