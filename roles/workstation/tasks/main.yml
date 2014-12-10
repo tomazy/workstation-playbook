@@ -1,4 +1,6 @@
 ---
+- apt_repository: repo='ppa:nviennot/tmate'
+
 - name: Install default packages
   apt: name={{item}} state=installed
   sudo: yes
@@ -9,6 +11,7 @@
     - wget
     - vim
     - tmux
+    - tmate
     - ack-grep
 
 - name: Sync dotfiles
