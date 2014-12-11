@@ -24,6 +24,7 @@ Bundle 'tpope/vim-dispatch.git'
 Bundle 'tpope/vim-endwise.git'
 Bundle 'tpope/vim-fugitive.git'
 Bundle 'tpope/vim-rails.git'
+Bundle 'benmills/vimux'
 
 " Prevents some security exploits
 set modelines=0
