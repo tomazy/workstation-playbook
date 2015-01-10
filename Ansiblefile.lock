@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/tomazy/ansible-role-chromedriver
+  ref: meta
+  sha: 09721ad831af80f2059eebe84b2e9ee062af674d
+  specs:
+    chromedriver (1.0.0)
+
+GIT
   remote: https://github.com/tomazy/postgresql
   ref: sudo-fix
   sha: 378f115b931f4c6ba390e200f0688ab9d4ed2a26
@@ -6,5 +13,6 @@ GIT
     tomazy.postgresql (0.0.0)
 
 DEPENDENCIES
+  chromedriver (>= 0)
   tomazy.postgresql (>= 0)
 
