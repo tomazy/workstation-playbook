@@ -43,6 +43,7 @@
     - { role: nodejs, tags: ['nodejs'] }
     - { role: java, tags: ['java'] }
     - { role: workstation, tags: ['workstation'] }
+    - { role: headless, tags: ['headless'] }
     - { role: gui, tags: ['gui'] }
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: chrome, tags: ['chrome'] }

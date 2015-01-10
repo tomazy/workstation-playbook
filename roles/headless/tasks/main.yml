@@ -1,0 +1,24 @@
+---
+- name: Install packages
+  apt: name={{item}} state=installed
+  sudo: yes
+  with_items:
+    - xvfb
+
+- name: Copy service file
+  copy: >
+    src=xvfb
+    dest=/etc/init.d/xvfb
+    mode=0755
+  sudo: yes
+
+- name: Start xvfb service
+  service: name=xvfb state=started enabled=yes
+  sudo: yes
+
+- name: Export DISPLAY
+  lineinfile: >
+    dest=~/.profile
+    state=present
+    line="export DISPLAY=:99"
+
