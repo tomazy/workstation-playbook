@@ -1,5 +1,11 @@
 ---
-- apt_repository: repo='ppa:nviennot/tmate'
+- name: tmate repo key
+  apt_key: keyserver=keyserver.ubuntu.com id=C3EBC003
+  sudo: true
+
+- name: tmqte repo
+  apt_repository: repo='ppa:nviennot/tmate'
+  sudo: true
 
 - name: Install default packages
   apt: name={{item}} state=installed
