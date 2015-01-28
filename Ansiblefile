@@ -3,5 +3,5 @@
 
 site "https://galaxy.ansible.com/api/v1"
 
-role "tomazy.postgresql", github: 'tomazy/postgresql', ref: 'sudo-fix'
+role "ANXS.postgresql"
 role "chromedriver", github: 'tomazy/ansible-role-chromedriver', ref: 'meta'

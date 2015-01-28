@@ -38,7 +38,7 @@
       tags: ['workstation']
 
   roles:
-    - { role: tomazy.postgresql, tags: ['postgresql'], postgresql_ext_install_dev_headers: yes }
+    - { role: ANXS.postgresql, tags: ['postgresql'], postgresql_ext_install_dev_headers: yes, sudo: yes }
     - { role: ruby, tags: ['ruby'] }
     - { role: nodejs, tags: ['nodejs'] }
     - { role: java, tags: ['java'] }
