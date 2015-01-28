@@ -47,7 +47,7 @@
     - { role: gui, tags: ['gui'] }
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: chrome, tags: ['chrome'] }
-    - { role: chromedriver, tags: ['chromedriver'], chromedriver_version: '2.13' }
+    - { role: chromedriver, tags: ['chromedriver'], chromedriver_version: '2.13', sudo: yes }
     - { role: android, tags: ['android'] }
     - { role: python, tags: ['python'] }
     - { role: mongodb, tags: ['mongodb'] }
