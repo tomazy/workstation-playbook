@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/ANXS/postgresql
   ref: master
-  sha: f0ad7e482c1a91af11b4cd7b895f5925973b827d
+  sha: 55e9dca15191beaf598be1f3c0bd280a90c97c47
   specs:
-    ANXS.postgresql (0.0.0)
+    postgresql (0.0.0)
 
 GIT
   remote: https://github.com/DrTom/ansible-role-chromedriver
@@ -20,7 +20,7 @@ GIT
     chruby (0.0.0)
 
 DEPENDENCIES
-  ANXS.postgresql (>= 0)
   chromedriver (>= 0)
   chruby (>= 0)
+  postgresql (>= 0)
 
