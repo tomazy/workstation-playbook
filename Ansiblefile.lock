@@ -6,9 +6,9 @@ GIT
     ANXS.postgresql (0.0.0)
 
 GIT
-  remote: https://github.com/tomazy/ansible-role-chromedriver
-  ref: meta
-  sha: 09721ad831af80f2059eebe84b2e9ee062af674d
+  remote: https://github.com/DrTom/ansible-role-chromedriver
+  ref: master
+  sha: 435a639e9bf0db54d45c291bfd537f8841a76c4e
   specs:
     chromedriver (1.0.0)
 
