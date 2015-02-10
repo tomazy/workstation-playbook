@@ -39,6 +39,7 @@
 
   roles:
     - { role: ANXS.postgresql, tags: ['postgresql'], postgresql_ext_install_dev_headers: yes, sudo: yes }
+    - { role: chruby, tags: ['ruby'], chruby_version: '0.3.9' }
     - { role: ruby, tags: ['ruby'] }
     - { role: nodejs, tags: ['nodejs'] }
     - { role: java, tags: ['java'] }

@@ -50,46 +50,7 @@
     ruby-install ruby {{item}} --no-reinstall --src-dir /tmp
   with_items: ruby_versions
 
-- name: Determine whether chruby is installed
-  stat: path=/usr/local/share/chruby/chruby.sh
-  register: chruby
-
-- name: Download chruby
-  get_url: >
-    url=https://github.com/postmodern/chruby/archive/v0.3.8.tar.gz
-    dest=/tmp/chruby-0.3.8.tar.gz
-  when: not chruby.stat.exists
-
-- name: Extract chruby
-  command: >
-    chdir=/tmp
-    tar -zxf chruby-0.3.8.tar.gz
-    creates=/tmp/chruby-0.3.8
-  when: not chruby.stat.exists
-
-- name: Install chruby
-  command: >
-    chdir=/tmp/chruby-0.3.8
-    creates=/usr/local/share/chruby
-    make install
-  sudo: yes
-  when: not chruby.stat.exists
-
 - name: Set default ruby
-  lineinfile: >
+  template: >
     dest=~/.ruby-version
-    state=present
-    line="ruby-{{ruby_default}}"
-    create=yes
-
-- name: Enable chruby
-  lineinfile: >
-    dest=~/.profile
-    state=present
-    line="source /usr/local/share/chruby/chruby.sh"
-
-- name: Auto load latest ruby
-  lineinfile: >
-    dest=~/.profile
-    state=present
-    line="source /usr/local/share/chruby/auto.sh"
+    src=home/.ruby-version.j2

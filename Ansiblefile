@@ -5,3 +5,4 @@ site "https://galaxy.ansible.com/api/v1"
 
 role "ANXS.postgresql"
 role "chromedriver", github: 'DrTom/ansible-role-chromedriver'
+role "chruby",       github: "ushu/ansible-chruby"

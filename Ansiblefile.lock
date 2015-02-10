@@ -12,7 +12,15 @@ GIT
   specs:
     chromedriver (1.0.0)
 
+GIT
+  remote: https://github.com/ushu/ansible-chruby
+  ref: master
+  sha: 4a67e789ee90a4cdb29c3f656afdcdd8490117cb
+  specs:
+    chruby (0.0.0)
+
 DEPENDENCIES
   ANXS.postgresql (>= 0)
   chromedriver (>= 0)
+  chruby (>= 0)
 
