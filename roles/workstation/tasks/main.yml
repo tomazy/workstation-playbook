@@ -30,7 +30,7 @@
   git: >
     repo=https://github.com/gmarik/Vundle.vim.git
     dest=~/.vim/bundle/Vundle.vim
-    update=no
+    update=yes
 
 - name: Determine whether vim plugins are already installed
   stat: path=~/.vim/bundle/nerdtree

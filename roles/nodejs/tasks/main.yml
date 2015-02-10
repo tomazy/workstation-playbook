@@ -12,7 +12,7 @@
   git: >
     repo=https://github.com/creationix/nvm.git
     dest=~/.nvm
-    update=no
+    update=yes
 
 - name: Enable nvm
   lineinfile: >
