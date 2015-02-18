@@ -19,8 +19,16 @@ GIT
   specs:
     chruby (0.0.0)
 
+GIT
+  remote: https://github.com/ushu/ansible-ruby-install
+  ref: master
+  sha: dc16216d8663dac9fd692f6299825adc97fb51df
+  specs:
+    ruby-install (0.0.0)
+
 DEPENDENCIES
   chromedriver (>= 0)
   chruby (>= 0)
   postgresql (>= 0)
+  ruby-install (>= 0)
 

@@ -3,46 +3,15 @@
   apt: name={{item}} state=installed
   sudo: yes
   with_items:
-    - build-essential
     - curl
     - git-core
     - libcurl4-openssl-dev
-    - libffi-dev
-    - libgdbm-dev
-    - libncurses5-dev
-    - libreadline-dev
-    - libreadline6-dev
     - libsqlite3-dev
     - libssl-dev
     - libxml2-dev
     - libxslt1-dev
-    - libyaml-dev
     - sqlite3
     - zlib1g-dev
-
-- name: Determine whether ruby-install is installed
-  stat: path=/usr/local/bin/ruby-install
-  register: ruby_install
-
-- name: Download ruby-install
-  get_url: url=https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
-           dest=/tmp/ruby-install-v0.5.0.tar.gz
-  when: not ruby_install.stat.exists
-
-- name: Extract ruby-install
-  command: >
-    chdir=/tmp
-    tar -zxf ruby-install-v0.5.0.tar.gz
-    creates=/tmp/ruby-install-0.5.0
-  when: not ruby_install.stat.exists
-
-- name: Install ruby-install
-  command: >
-    chdir=/tmp/ruby-install-0.5.0
-    creates=/usr/local/bin/ruby-install
-    make install
-  sudo: yes
-  when: not ruby_install.stat.exists
 
 - name: Install rubies
   command: >
