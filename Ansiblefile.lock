@@ -6,6 +6,13 @@ GIT
     postgresql (0.0.0)
 
 GIT
+  remote: https://github.com/DavidWittman/ansible-redis
+  ref: master
+  sha: 04d6561ed8b48aa1bd9f8fadb5138f1f5e6d6ec9
+  specs:
+    redis (0.0.0)
+
+GIT
   remote: https://github.com/DrTom/ansible-role-chromedriver
   ref: master
   sha: 435a639e9bf0db54d45c291bfd537f8841a76c4e
@@ -30,5 +37,6 @@ DEPENDENCIES
   chromedriver (>= 0)
   chruby (>= 0)
   postgresql (>= 0)
+  redis (>= 0)
   ruby-install (>= 0)
 

@@ -52,6 +52,7 @@
     - { role: android, tags: ['android'] }
     - { role: python, tags: ['python'] }
     - { role: mongodb, tags: ['mongodb'] }
+    - { role: redis, tags: ['redis'], sudo: yes }
 
   tasks:
     - shell: bash -lc 'gem list'
