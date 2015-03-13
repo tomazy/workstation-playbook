@@ -337,6 +337,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javascriptGlobal", s:blue, "", "")
 	call <SID>X("javascriptStatement", s:red, "", "")
 
+  " pangloss/vim-javascript
+	call <SID>X("jsReturn", s:purple, "", "")
+	call <SID>X("jsConditional", s:purple, "", "")
+	call <SID>X("jsFutureKeys", s:purple, "", "")
+	call <SID>X("jsFunction", s:purple, "", "")
+	call <SID>X("jsThis", s:red, "", "")
+
 	" HTML Highlighting
 	call <SID>X("htmlTag", s:red, "", "")
 	call <SID>X("htmlTagName", s:red, "", "")
