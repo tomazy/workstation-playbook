@@ -82,4 +82,7 @@
         - npm
         - bower
         - grunt-cli
+        - gulp
+        - nodemon
+        - node-inspector
       tags: ['nodejs']
