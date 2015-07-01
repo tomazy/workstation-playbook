@@ -3,7 +3,7 @@
   apt_key: keyserver=keyserver.ubuntu.com id=C3EBC003
   sudo: true
 
-- name: tmqte repo
+- name: tmate repo
   apt_repository: repo='ppa:nviennot/tmate'
   sudo: true
 
