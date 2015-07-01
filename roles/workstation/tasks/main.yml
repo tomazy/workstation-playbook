@@ -42,3 +42,19 @@
 
 - name: Working dir
   file: path=~/workspace state=directory
+
+- name: bash-git-prompt
+  git: >
+    repo=https://github.com/magicmonty/bash-git-prompt
+    dest=~/.bash-git-prompt
+
+- name: add bash-git-prompt to
+  lineinfile: >
+    dest=~/.profile
+    line="GIT_PROMPT_THEME=Solarized_Ubuntu"
+    state=present
+
+- lineinfile: >
+    dest=~/.profile
+    line="source ~/.bash-git-prompt/gitprompt.sh"
+    state=present
