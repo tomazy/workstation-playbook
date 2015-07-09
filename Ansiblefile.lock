@@ -20,6 +20,13 @@ GIT
     chromedriver (1.0.0)
 
 GIT
+  remote: https://github.com/kamaln7/ansible-swapfile
+  ref: master
+  sha: 8eb0e18d90a7f25b6658fbf56bcba01b84a664fc
+  specs:
+    swapfile (0.0.0)
+
+GIT
   remote: https://github.com/ushu/ansible-chruby
   ref: master
   sha: 4a67e789ee90a4cdb29c3f656afdcdd8490117cb
@@ -39,4 +46,5 @@ DEPENDENCIES
   postgresql (>= 0)
   redis (>= 0)
   ruby-install (>= 0)
+  swapfile (>= 0)
 
