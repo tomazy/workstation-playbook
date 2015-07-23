@@ -7,7 +7,7 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 Bundle 'corntrace/bufexplorer.git'
 Bundle 'digitaltoad/vim-jade.git'
