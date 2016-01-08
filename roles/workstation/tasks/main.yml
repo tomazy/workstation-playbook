@@ -7,6 +7,10 @@
   apt_repository: repo='ppa:nviennot/tmate'
   sudo: true
 
+- name: latest git repo
+  apt_repository: repo='ppa:git-core/ppa/ubuntu'
+  sudo: true
+
 - name: Install default packages
   apt: name={{item}} state=installed
   sudo: yes
