@@ -58,3 +58,8 @@
     dest=~/.profile
     line="source ~/.bash-git-prompt/gitprompt.sh"
     state=present
+
+- lineinfile: >
+    dest=~/.profile
+    line="export EDITOR=/usr/bin/vim"
+    state=present

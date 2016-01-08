@@ -67,6 +67,7 @@
         - bundler
         - pry
         - git-pair
+        - tmuxinator
       tags: ['gems']
 
     - name: Find current npm
