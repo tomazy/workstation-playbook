@@ -6,6 +6,8 @@
   apt: name={{item}} state=installed
   sudo: yes
   with_items:
+    - build-essential
+    - gdb
     - tree
     - git
     - curl
