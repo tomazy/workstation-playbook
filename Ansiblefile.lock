@@ -15,9 +15,9 @@ GIT
 GIT
   remote: https://github.com/DrTom/ansible-role-chromedriver
   ref: master
-  sha: 435a639e9bf0db54d45c291bfd537f8841a76c4e
+  sha: 13f25ffad78b861dc1a4b8f680ec8311e63213af
   specs:
-    chromedriver (1.0.0)
+    chromedriver (0.0.0)
 
 GIT
   remote: https://github.com/kamaln7/ansible-swapfile
