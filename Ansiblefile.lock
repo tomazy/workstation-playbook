@@ -1,14 +1,14 @@
 GIT
   remote: https://github.com/ANXS/postgresql
   ref: master
-  sha: 55e9dca15191beaf598be1f3c0bd280a90c97c47
+  sha: 8fed074e36ddd409c5d68e238d2c0d4847032007
   specs:
     postgresql (0.0.0)
 
 GIT
   remote: https://github.com/DavidWittman/ansible-redis
   ref: master
-  sha: 04d6561ed8b48aa1bd9f8fadb5138f1f5e6d6ec9
+  sha: 1f9316670e9d04c60a0adba0b98ebf96813017b9
   specs:
     redis (0.0.0)
 
